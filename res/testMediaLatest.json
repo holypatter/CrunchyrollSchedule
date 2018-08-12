@@ -1,0 +1,47 @@
+{
+  "data": [
+    {
+      "class": "media",
+      "media_id": "775056",
+      "etp_guid": "GR4PPVW1Y",
+      "collection_id": "24551",
+      "collection_etp_guid": "GRVDN2M0R",
+      "series_id": "273203",
+      "series_etp_guid": "G69PZ5PDY",
+      "media_type": "anime",
+      "episode_number": "5",
+      "name": "Two Leaders",
+      "description": "The \"Giant of the East\" has come to attack Carne Village, but the villagers are willing to put their lives on the line to protect their home and families. While the goblin troop defends the front gates, Enri and Nphirea defends the village from behind.",
+      "screenshot_image": {
+        "thumb_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/d68645619cd6e7063c51a39a689b44fe1533615713_thumb.jpg",
+        "small_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/d68645619cd6e7063c51a39a689b44fe1533615713_small.jpg",
+        "medium_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/d68645619cd6e7063c51a39a689b44fe1533615713_medium.jpg",
+        "large_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/d68645619cd6e7063c51a39a689b44fe1533615713_large.jpg",
+        "full_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/d68645619cd6e7063c51a39a689b44fe1533615713_full.jpg",
+        "wide_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/d68645619cd6e7063c51a39a689b44fe1533615713_wide.jpg",
+        "widestar_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/d68645619cd6e7063c51a39a689b44fe1533615713_widestar.jpg",
+        "fwide_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/d68645619cd6e7063c51a39a689b44fe1533615713_fwide.jpg",
+        "fwidestar_url": "https://img1.ak.crunchyroll.com/i/spire1-tmb/d68645619cd6e7063c51a39a689b44fe1533615713_fwidestar.jpg",
+        "width": "1920",
+        "height": "1080"
+      },
+      "bif_url": "https://img1.ak.crunchyroll.com/i/bif/775056-sd",
+      "url": "http://www.crunchyroll.com/overlord/episode-5-two-leaders-775056",
+      "clip": false,
+      "available": true,
+      "premium_available": true,
+      "free_available": false,
+      "available_time": "2018-08-07T07:30:00-07:00",
+      "unavailable_time": "9998-11-30T00:00:00-08:00",
+      "premium_available_time": "2018-08-07T07:30:00-07:00",
+      "premium_unavailable_time": "9998-11-30T00:00:00-08:00",
+      "free_available_time": "2018-08-14T07:30:00-07:00",
+      "free_unavailable_time": "9998-11-30T00:00:00-08:00",
+      "availability_notes": "",
+      "created": "2018-08-07T07:29:32-07:00",
+      "playhead": 0
+    }
+  ],
+  "error": false,
+  "code": "ok"
+}
