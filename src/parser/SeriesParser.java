@@ -30,11 +30,12 @@ public class SeriesParser {
     }
 
     private static int parseOneSeries(JSONObject series) {
-        if (series.has("series_id") && series.has("name") && series.has("landscape_image")) {
+        if (series.has("series_id") && series.has("name") && series.has("landscape_image") && series.has("description")) {
             boolean imgHasAllInfo;
             try {
                 Series s = SeriesManager.getInstance().getSeriesWithId(series.getString("series_id"));
                 s.setName(series.getString("name"));
+                s.setDescription(series.getString("description"));
                 JSONObject landscapeIMG = series.getJSONObject("landscape_image");
                 imgHasAllInfo = parseIMG(landscapeIMG, s);
                 if (imgHasAllInfo) {

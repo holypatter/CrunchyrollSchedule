@@ -1,5 +1,8 @@
 package parser;
 
+import model.EpisodeManager;
+import model.LatestEpisode;
+import model.Series;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,7 +14,7 @@ import parser.exceptions.AllMissingDataException;
  */
 public class MediaParser {
 
-    public static void parseAllMedia(String jsonResponse) throws JSONException, AllMissingDataException {
+    public static void parseAllMedia(String jsonResponse, Series series) throws JSONException, AllMissingDataException {
         JSONObject allMedia = new JSONObject(jsonResponse);
         JSONArray medias = allMedia.getJSONArray("data");
 
@@ -19,7 +22,7 @@ public class MediaParser {
 
         for (int i = 0; i < medias.length(); i++) {
             JSONObject media = medias.getJSONObject(i);
-            numMedia += parseMedia(media);
+            numMedia += parseMedia(media, series);
         }
 
         if (numMedia == 0) {
@@ -27,9 +30,12 @@ public class MediaParser {
         }
     }
 
-    private static int parseMedia(JSONObject media) {
+    private static int parseMedia(JSONObject media, Series series) throws JSONException {
         if (media.has("name") && media.has("premium_available_time") && media.has("episode_number")) {
-
+            LatestEpisode le = EpisodeManager.getInstance().getLatestEpisode(series.getId());
+            le.setName(media.getString("name"));
+            le.setPremiumAvailableTime(media.getString("premium_available_time"));
+            le.setEpNum(media.getInt("episode_number"));
 
             return 1;
         }
