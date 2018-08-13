@@ -7,12 +7,14 @@ public class Series {
     private String imgLargeURL;
     private String imgFullURL;
     private String id;
+    private String description;
 
     public Series(String id) {
         this.id = id;
         name = "";
         imgLargeURL = "";
         imgFullURL = "";
+        description = "";
     }
 
     /**
@@ -30,6 +32,10 @@ public class Series {
         this.imgFullURL = imgFullURL;
     }
 
+    public void setDescription(String description) { this.description = description; }
+
+    public String getDescription() { return description; }
+
     public String getImgLargeURL() {
         return imgLargeURL;
     }
@@ -42,9 +48,7 @@ public class Series {
         return name;
     }
 
-    public String getId() {
-        return id;
-    }
+    public String getId() { return id; }
 
 
     /**

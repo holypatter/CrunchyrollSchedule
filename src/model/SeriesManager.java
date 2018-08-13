@@ -9,7 +9,6 @@ import java.util.Map;
  */
 public class SeriesManager implements Iterable<Series> {
     private static SeriesManager instance;
-
     private Map<String, Series> simulcasts;
 
     private SeriesManager() {
