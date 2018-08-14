@@ -2,7 +2,6 @@ package main;
 
 import auth.CrunchyrollSessionId;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -41,6 +40,7 @@ public class Main extends Application {
     private static final int WINDOW_HEIGHT = 700;
     private static final String SESS_ID_NAME = "sess_id";
     private static final int LARGE_FONT_SIZE = 20;
+    private static Scene mainScene;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -63,7 +63,7 @@ public class Main extends Application {
         sp.setContent(root);
 
         primaryStage.setTitle("Crunchyroll Simulcasts");
-        final Scene mainScene = new Scene(sp, WINDOW_WIDTH, WINDOW_HEIGHT);
+        mainScene = new Scene(sp, WINDOW_WIDTH, WINDOW_HEIGHT);
 
         mainScene.setFill(Color.ORANGE);
 
@@ -131,7 +131,7 @@ public class Main extends Application {
         Button back = new Button("Back");
         back.setOnAction((event1) -> {
 //            startingStage(primaryStage);
-            returnToMain(primaryStage);
+            primaryStage.setScene(mainScene);
         });
         vBox.getChildren().add(topPart);
         vBox.getChildren().add(desc);
@@ -139,20 +139,7 @@ public class Main extends Application {
         return vBox;
     }
 
-    private void returnToMain(Stage primaryStage) {
-        //parse data asynchronously
-        Runnable task = () -> runTask(primaryStage);
 
-        Thread backgroundThread = new Thread(task);
-        backgroundThread.setDaemon(true);
-        backgroundThread.start();
-    }
-
-    private void runTask(Stage stage) {
-        Platform.runLater(() -> {
-            startingStage(stage);
-        });
-    }
 
     /**
      * Completes layout for the top section of the scene
