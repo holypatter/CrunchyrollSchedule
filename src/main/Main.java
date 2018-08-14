@@ -2,6 +2,7 @@ package main;
 
 import auth.CrunchyrollSessionId;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -129,12 +130,28 @@ public class Main extends Application {
         desc.setWrapText(true);
         Button back = new Button("Back");
         back.setOnAction((event1) -> {
-            startingStage(primaryStage);
+//            startingStage(primaryStage);
+            returnToMain(primaryStage);
         });
         vBox.getChildren().add(topPart);
         vBox.getChildren().add(desc);
         vBox.getChildren().add(back);
         return vBox;
+    }
+
+    private void returnToMain(Stage primaryStage) {
+        //parse data asynchronously
+        Runnable task = () -> runTask(primaryStage);
+
+        Thread backgroundThread = new Thread(task);
+        backgroundThread.setDaemon(true);
+        backgroundThread.start();
+    }
+
+    private void runTask(Stage stage) {
+        Platform.runLater(() -> {
+            startingStage(stage);
+        });
     }
 
     /**
