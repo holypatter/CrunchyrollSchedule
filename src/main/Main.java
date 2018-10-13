@@ -43,14 +43,14 @@ public class Main extends Application {
     private static Scene mainScene;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         startingStage(primaryStage);
     }
 
     /**
      * initializing starting scene
      *
-     * @param primaryStage    primary stage
+     * @param primaryStage primary stage
      */
     private void startingStage(Stage primaryStage) {
         VBox root = new VBox(8);
@@ -74,18 +74,18 @@ public class Main extends Application {
     /**
      * adding each series to the scene
      *
-     * @param primaryStage    primary stage
-     * @param root            scene to add series to
-     * @param series          series to add
+     * @param primaryStage primary stage
+     * @param root         scene to add series to
+     * @param series       series to add
      */
     private void setUpSeries(Stage primaryStage, VBox root, Series series) {
         Image largeImg = new Image(series.getImgLargeURL());
         ImageView largeImgView = new ImageView(largeImg);
         String name = series.getName();
         Text text = new Text(name);
-        text.setTranslateX(WINDOW_WIDTH/4);
+        text.setTranslateX(WINDOW_WIDTH / 4);
         Button imageButton = new Button("", largeImgView);
-        imageButton.setTranslateX(WINDOW_WIDTH/4);
+        imageButton.setTranslateX(WINDOW_WIDTH / 4);
         imageButton.setOnAction((event) -> {
             // parse new media data
             generateMedia(series);
@@ -101,27 +101,27 @@ public class Main extends Application {
     /**
      * sets up a new scene when user clicks on the button for a series
      *
-     * @param primaryStage  primary stage
-     * @param series        series user clicked on
+     * @param primaryStage primary stage
+     * @param series       series user clicked on
      */
     private void setNewScene(Stage primaryStage, Series series) {
         HBox topPart = addingTopSection(series);
         VBox vBox = addingBottomPartToTopPart(primaryStage, series, topPart);
 
-        final Scene sideScene = new Scene(vBox, WINDOW_WIDTH+500, WINDOW_HEIGHT);
+        final Scene sideScene = new Scene(vBox, WINDOW_WIDTH + 500, WINDOW_HEIGHT);
 
         primaryStage.setScene(sideScene);
-        primaryStage.setX(WINDOW_WIDTH-400);
+        primaryStage.setX(WINDOW_WIDTH - 400);
         primaryStage.show();
     }
 
     /**
      * Completing the layout of the scene
      *
-     * @param primaryStage    primary stage
-     * @param series          current series
-     * @param topPart         part to add onto
-     * @return                the completed node
+     * @param primaryStage primary stage
+     * @param series       current series
+     * @param topPart      part to add onto
+     * @return the completed node
      */
     private VBox addingBottomPartToTopPart(Stage primaryStage, Series series, HBox topPart) {
         VBox vBox = new VBox(20);
@@ -140,12 +140,11 @@ public class Main extends Application {
     }
 
 
-
     /**
      * Completes layout for the top section of the scene
      *
-     * @param series    current series
-     * @return          top section as a node
+     * @param series current series
+     * @return top section as a node
      */
     private HBox addingTopSection(Series series) {
         String seriesID = series.getId();
@@ -153,7 +152,7 @@ public class Main extends Application {
         Image fullImg = new Image(series.getImgFullURL());
         ImageView fullImgView = new ImageView(fullImg);
         // assuming the next episode will be released a week after
-        String[]parts = EpisodeManager.getInstance().getLatestEpisode(seriesID).getPremiumAvailableTime().split("T|-");
+        String[] parts = EpisodeManager.getInstance().getLatestEpisode(seriesID).getPremiumAvailableTime().split("T|-");
         String premTime = parts[0] + "-" + parts[1] + "-" + parts[2] + " " + parts[3];
         Timestamp ts = Timestamp.valueOf(premTime);
         Calendar calendar = Calendar.getInstance();
@@ -180,7 +179,7 @@ public class Main extends Application {
     /**
      * parses data from crunchyroll api into EpisodeManager
      *
-     * @param series   series for the episode
+     * @param series series for the episode
      */
     private void generateMedia(Series series) {
 //        //parse data asynchronously
@@ -201,7 +200,7 @@ public class Main extends Application {
         } catch (AllMissingDataException e) {
             e.printStackTrace();
         }
-        if (EpisodeManager.getInstance().getLatestEpisode(series.getId()).getName() != "") {
+        if (!EpisodeManager.getInstance().getLatestEpisode(series.getId()).getName().equals("")) {
             System.out.println("successfully parsed data");
         }
     }
@@ -238,6 +237,7 @@ public class Main extends Application {
     }
 
 
+
     /**
      * Downloads real time data from current session and parsing the data into SeriesManager
      */
@@ -248,12 +248,14 @@ public class Main extends Application {
         SeriesParser.parseAllSeries(data);
     }
 
+
     /**
      * Retrieves sess_id from crunchyroll's cookies
      */
     private static void retrieveSessId() throws IOException {
         // establing connection
-        URLConnection connection = new URL("http://crunchyroll.com").openConnection();
+        URLConnection connection = new URL("https://crunchyroll.com").openConnection();
+        connection.connect();
         Map<String, List<String>> headers = connection.getHeaderFields();
         List<String> values = headers.get("Set-Cookie");
 

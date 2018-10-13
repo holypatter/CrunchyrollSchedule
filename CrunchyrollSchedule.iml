@@ -7,7 +7,17 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="java-json" level="project" />
-    <orderEntry type="library" name="junit-jupiter-api-5.0.0" level="project" />
+    <orderEntry type="library" exported="" name="java-json" level="project" />
+    <orderEntry type="library" exported="" name="junit-jupiter-api-5.0.0" level="project" />
+    <orderEntry type="module-library" exported="" scope="RUNTIME">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Program Files/Java/jre1.8.0_181/lib/ext/jfxrt.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="javax.servlet" level="project" />
   </component>
 </module>
